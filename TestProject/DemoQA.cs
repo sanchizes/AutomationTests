@@ -4,9 +4,9 @@ using OpenQA.Selenium.Chrome;
 namespace AutomationTests
 {
     [TestFixture]
-    public class Tests
+    public class ElementsTests
     {
-        IWebDriver driver = new ChromeDriver();
+        IWebDriver driver = new ChromeDriver("C:\\Webdrivers\\chromedriver-win64\\chromedriver.exe");
 
         [SetUp]
         public void Setup()
@@ -18,13 +18,15 @@ namespace AutomationTests
         [OneTimeTearDown] 
         public void Teardown() 
         {
-            driver.Dispose();
+            Thread.Sleep(5000);
+            driver.Close();
         }
 
         [Test]
-        public void Test1()
+        public void textBox()
         {
-
+            IWebElement elements = driver.FindElement(By.ClassName("card"));
+            elements.Click();
         }
     }
 }
